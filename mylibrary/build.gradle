@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -37,4 +38,26 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId "com.github.vylhart"
+            artifactId "mylibrary"
+            version "0.0.2"
+            artifact("$buildDir/outputs/aar/mylibrary-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name "GithubPackages"
+            url uri("https://maven.pkg.github.com/vylhart/ToastLibrary")
+            credentials {
+                username = "Shashank Kumar"
+                password = "***"
+            }
+        }
+    }
 }

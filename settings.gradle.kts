@@ -10,6 +10,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/vylhart/Analytics")
+            credentials {
+                username = "Shashank Kumar"
+                password = "***"
+            }
+        }
     }
 }
 
